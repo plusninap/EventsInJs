@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <style></style>
+  </head>
+  <body>
+    <button id="btn_first">Кликни меня</button>
+    <p id="countText">Счётчик: 0</p>
+
+    <button id="toggleBtn">Скрыть/Показать квадрат</button>
+    <div
+      id="square"
+      style="width: 100px; height: 100px; background: blue; margin-top: 10px"
+    ></div>
+
+    <button id="toggle">Переключить тему</button>
+
+    <div
+      class="container"
+      id="container"
+      style="padding: 20px; background: lightgray"
+    >
+      <button id="btn_second">Нажми меня</button>
+    </div>
+
+    <script>
+      let count = 0;
+
+      document.getElementById("btn_first").addEventListener("click", function () {
+        count++;
+        document.getElementById("countText").textContent = "Счётчик: " + count;
+      });
+
+      const btn = document.getElementById("toggleBtn");
+      const square = document.getElementById("square");
+
+      btn.addEventListener("click", () => {
+        if (square.style.display === "none") {
+          square.style.display = "block"; 
+        } else {
+          square.style.display = "none"; 
+        }
+      });
+
+      // 3 задача
+      let isDark = false; 
+
+      document.getElementById("toggle").addEventListener("click", function () {
+        if (isDark) {
+          document.body.style.backgroundColor = "white";
+          document.body.style.color = "black";
+        } else {
+          document.body.style.backgroundColor = "black";
+          document.body.style.color = "white";
+        }
+
+        isDark = !isDark;
+      });
+
+      // 4 задача
+      const container = document.getElementById("container");
+      const btn_second = document.getElementById("btn_second");
+
+      container.addEventListener("click", function () {
+        console.log("Клик по контейнеру");
+      });
+
+      btn_second.addEventListener("click", function (event) {
+        event.stopPropagation(); // Останавливаем всплытие
+        console.log("Клик по кнопке");
+      });
+    </script>
+  </body>
+</html>
