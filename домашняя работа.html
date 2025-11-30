@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <style>
+      .first {
+        display: flex;
+        gap: 10px;
+      }
+      .square {
+        width: 200px;
+        height: 200px;
+      }
+      #one {
+        background-color: green;
+      }
+      #two {
+        background-color: red;
+      }
+      #three {
+        background-color: blue;
+      }
+
+      .border__square {
+        width: 200px;
+        height: 200px;
+        border: 1px black solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="first">
+      <div class="square" id="one"></div>
+      <div class="square" id="two"></div>
+      <div class="square" id="three"></div>
+
+      <div class="border__square"></div>
+    </div>
+    <div class="third">
+      <ul id="list">
+        <li>Купить книгу</li>
+        <li>Сходить в кино</li>
+        <li>Научиться JS</li>
+        <li>Погулять в парке</li>
+        <li>Сделать зарядку</li>
+      </ul>
+    </div>
+    <script>
+      // первая задача
+      let squares = document.querySelectorAll(".square");
+
+      let arr = ["yellow", "black", "purple", "orange"];
+      let rand = Math.floor(Math.random() * 4);
+      squares.forEach((square) => {
+        square.addEventListener("click", (event) => {
+          event.target.style.backgroundColor = arr[rand];
+          rand = Math.floor(Math.random() * 4);
+        });
+      });
+
+      // вторая задача
+      let border__square = document.getElementsByClassName("border__square");
+      border__square[0].addEventListener("mouseover", () => {
+        border__square[0].style.backgroundColor = "green";
+      });
+      border__square[0].addEventListener("mouseout", () => {
+        border__square[0].style.backgroundColor = "white";
+      });
+
+      // 3 задача
+      const list = document.getElementById("list");
+
+      list.addEventListener("click", (event) => {
+        if (event.target.tagName === "LI") {
+          event.target.style.color = "green";
+          console.log("Вы выбрали:", event.target.textContent);
+        }
+      });
+    </script>
+  </body>
+</html>
